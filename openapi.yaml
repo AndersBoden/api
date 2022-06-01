@@ -1,0 +1,63 @@
+openapi: 3.0.1
+info:
+  title: SEB 1
+  version: '1.0'
+  description: SEB 1 is a test api for the APIs training course
+  termsOfService: https://example.com/tos
+  contact:
+    email: support@example.com
+    name: Support
+    url: https://example.com/support
+  license:
+    name: License
+    url: https://example.com/license
+servers:
+  - url: https://my-json-server.typicode.com/bearc0025/api
+    variables: {}
+    description: User API
+  - url: https://my-json-server.typicode.com/AndersBoden/api
+    variables: {}
+    description: User API - My fake online REST Server (GitHub) 
+paths:
+  /users:
+    summary: base level for users
+    get:
+      summary: fetch users
+      description: read users from server
+      operationId: fetchUsers
+      responses:
+        2XX:
+          description: successful fetch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        default:
+          description: Default error sample response
+        5XX:
+          description: "Server error sample response"
+          content:
+            application/json:
+              examples:
+                server error:
+                  value: Server error
+      tags:
+        - users
+components:
+  schemas: 
+    User:  
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        username:
+          type: string
+          example: bear
+        score:
+          type: integer
+          example: 55
+        active:
+          type: boolean
+          example: true
+      
